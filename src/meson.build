@@ -42,6 +42,12 @@ libraqm = library(
     install: true,
 )
 
+libraqm_dep = declare_dependency(
+  link_with: libraqm,
+  include_directories: include_directories('.'),
+  dependencies: deps)
+meson.override_dependency('librqam', libraqm_dep)
+
 if get_option('tests')
     libraqm_test = static_library(
         'raqm-test',
