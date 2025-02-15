@@ -42,12 +42,14 @@ libraqm = library(
     install: true,
 )
 
-libraqm_test = static_library(
-    'raqm-test',
-    'raqm.c',
-    'raqm.h',
-    dependencies: deps,
-    c_args: ['-DRAQM_TESTING', '-DHAVE_CONFIG_H'],
-    install: false,
-)
+if get_option('tests')
+    libraqm_test = static_library(
+        'raqm-test',
+        'raqm.c',
+        'raqm.h',
+        dependencies: deps,
+        c_args: ['-DRAQM_TESTING', '-DHAVE_CONFIG_H'],
+        install: false,
+    )
+endif
 

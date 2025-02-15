@@ -90,7 +90,9 @@ endif
 deps = [freetype, harfbuzz, fribidi, sheenbidi]
 
 subdir('src')
-subdir('tests')
+if get_option('tests')
+    subdir('tests')
+endif
 if get_option('docs')
     subdir('docs')
 endif
